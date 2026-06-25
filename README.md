@@ -17,6 +17,7 @@ A single-page marketing website for **Phoebe & Vale Advisory**, a long-term weal
 - Smooth in-page navigation, active-section highlighting, animated stat counters,
   and an accessible testimonial carousel
 - Lead-capture enquiry form (FormSubmit AJAX) with inline validation and honeypot
+- Floating **WhatsApp chat widget** with suggested queries that opens a pre-filled chat
 - On-page SEO baked in: canonical, Open Graph/Twitter cards, JSON-LD `FinancialService`
   schema, `robots.txt`, and `sitemap.xml`
 - Custom typography (Cormorant Garamond + Jost via Google Fonts)

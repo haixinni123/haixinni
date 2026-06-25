@@ -442,6 +442,71 @@
     </div>
   </footer>
 
+  <!-- ===================== WhatsApp floating chat widget ===================== -->
+  <!--
+    Launcher (bottom-right) opens a small panel with suggested queries.
+    Clicking a suggestion (or the send button) opens a WhatsApp chat to
+    +65 8669 5008 with the question pre-filled. No backend required.
+  -->
+  <div class="wa-widget" id="waWidget">
+    <!-- Chat panel -->
+    <div class="wa-panel" id="waPanel" role="dialog" aria-modal="false"
+         aria-label="Chat with Phoebe & Vale on WhatsApp" hidden>
+      <div class="wa-panel-head">
+        <span class="wa-avatar" aria-hidden="true">P&amp;V</span>
+        <span class="wa-head-meta">
+          <span class="wa-head-name">Phoebe &amp; Vale Advisory</span>
+          <span class="wa-head-status"><span class="wa-dot" aria-hidden="true"></span>Typically replies within minutes</span>
+        </span>
+        <button class="wa-close" id="waClose" type="button" aria-label="Close chat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="wa-panel-body">
+        <p class="wa-bubble">
+          👋 Hi there! Welcome to <strong>Phoebe &amp; Vale Advisory</strong>.
+          How can we help you grow and protect what matters? Tap a question below
+          or send your own.
+        </p>
+
+        <p class="wa-suggest-label">Suggested questions</p>
+        <div class="wa-suggestions" id="waSuggestions">
+          <button class="wa-chip" type="button">I'd like to book a free consultation</button>
+          <button class="wa-chip" type="button">How do you charge for advice?</button>
+          <button class="wa-chip" type="button">Can you help with retirement planning?</button>
+          <button class="wa-chip" type="button">I want a review of my investment portfolio</button>
+          <button class="wa-chip" type="button">Help me with estate &amp; legacy planning</button>
+        </div>
+      </div>
+
+      <form class="wa-compose" id="waCompose">
+        <input type="text" id="waInput" class="wa-input" autocomplete="off"
+               placeholder="Type your message…" aria-label="Type your message" />
+        <button type="submit" class="wa-send" aria-label="Send on WhatsApp">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 2L11 13" />
+            <path d="M22 2l-7 20-4-9-9-4 20-7z" />
+          </svg>
+        </button>
+      </form>
+    </div>
+
+    <!-- Launcher button -->
+    <button class="wa-launcher" id="waLauncher" type="button"
+            aria-haspopup="dialog" aria-expanded="false" aria-controls="waPanel"
+            aria-label="Chat with us on WhatsApp">
+      <svg class="wa-icon-logo" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+        <path d="M16.04 4C9.93 4 4.98 8.95 4.98 15.06c0 1.95.51 3.86 1.48 5.55L4.9 27.1l6.66-1.53a11.02 11.02 0 0 0 4.48.95h.01c6.1 0 11.06-4.95 11.06-11.06C27.11 8.95 22.15 4 16.04 4zm0 20.27h-.01a9.2 9.2 0 0 1-4.68-1.28l-.34-.2-3.95.91.84-3.85-.22-.35a9.16 9.16 0 0 1-1.41-4.89c0-5.07 4.13-9.2 9.21-9.2 2.46 0 4.77.96 6.51 2.7a9.13 9.13 0 0 1 2.7 6.51c0 5.08-4.13 9.2-9.2 9.2zm5.05-6.89c-.28-.14-1.64-.81-1.89-.9-.25-.09-.43-.14-.62.14-.18.28-.71.9-.87 1.08-.16.18-.32.21-.6.07-.28-.14-1.17-.43-2.22-1.37-.82-.73-1.38-1.64-1.54-1.92-.16-.28-.02-.43.12-.57.13-.12.28-.32.42-.48.14-.16.18-.28.28-.46.09-.18.05-.35-.02-.49-.07-.14-.62-1.5-.85-2.05-.22-.54-.45-.46-.62-.47l-.53-.01c-.18 0-.48.07-.74.35-.25.28-.96.94-.96 2.3 0 1.35.99 2.66 1.12 2.84.14.18 1.94 2.96 4.7 4.15.66.28 1.17.45 1.57.58.66.21 1.26.18 1.74.11.53-.08 1.64-.67 1.87-1.32.23-.65.23-1.2.16-1.32-.07-.12-.25-.19-.53-.33z"/>
+      </svg>
+      <span class="wa-launcher-label">Chat with us</span>
+    </button>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>

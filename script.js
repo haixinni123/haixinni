@@ -406,3 +406,85 @@
     });
   }
 })();
+
+/* ============================================================
+   WhatsApp floating chat widget
+   Opens a WhatsApp chat to +65 8669 5008 with the chosen /typed
+   message pre-filled. Self-contained; no dependencies.
+   ============================================================ */
+(function () {
+  "use strict";
+
+  const WHATSAPP_NUMBER = "6586695008"; // +65 8669 5008, intl format, no "+"
+
+  const widget = document.getElementById("waWidget");
+  if (!widget) return;
+
+  const launcher = document.getElementById("waLauncher");
+  const panel = document.getElementById("waPanel");
+  const closeBtn = document.getElementById("waClose");
+  const suggestions = document.getElementById("waSuggestions");
+  const compose = document.getElementById("waCompose");
+  const input = document.getElementById("waInput");
+
+  // Open a WhatsApp chat with the message pre-filled.
+  const sendToWhatsApp = (message) => {
+    const text = (message || "").trim();
+    const url =
+      "https://wa.me/" + WHATSAPP_NUMBER +
+      (text ? "?text=" + encodeURIComponent(text) : "");
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
+  const openPanel = () => {
+    panel.hidden = false;
+    widget.classList.add("open");
+    launcher.setAttribute("aria-expanded", "true");
+    // Focus the input for quick typing (skip on small screens to avoid
+    // the keyboard covering the panel).
+    if (window.innerWidth > 600) {
+      window.setTimeout(() => input.focus(), 60);
+    }
+  };
+
+  const closePanel = () => {
+    panel.hidden = true;
+    widget.classList.remove("open");
+    launcher.setAttribute("aria-expanded", "false");
+  };
+
+  const togglePanel = () => (panel.hidden ? openPanel() : closePanel());
+
+  launcher.addEventListener("click", togglePanel);
+  closeBtn.addEventListener("click", closePanel);
+
+  // Suggested-query chips → straight to WhatsApp with that question.
+  suggestions.addEventListener("click", (e) => {
+    const chip = e.target.closest(".wa-chip");
+    if (!chip) return;
+    sendToWhatsApp(chip.textContent.trim());
+  });
+
+  // Free-text compose → WhatsApp.
+  compose.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text) {
+      input.focus();
+      return;
+    }
+    sendToWhatsApp(text);
+    input.value = "";
+  });
+
+  // Close on Escape, and on outside click while open.
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !panel.hidden) {
+      closePanel();
+      launcher.focus();
+    }
+  });
+  document.addEventListener("click", (e) => {
+    if (!panel.hidden && !widget.contains(e.target)) closePanel();
+  });
+})();
