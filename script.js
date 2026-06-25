@@ -170,6 +170,97 @@
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
   /* ---------------------------------------------------------
+     5b. SCROLL PROGRESS — gold hairline under the nav
+     --------------------------------------------------------- */
+  const progressEl = document.getElementById("scrollProgress");
+  if (progressEl) {
+    const updateProgress = () => {
+      const doc = document.documentElement;
+      const scrollable = doc.scrollHeight - doc.clientHeight;
+      const pct = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+      progressEl.style.width = pct + "%";
+    };
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    updateProgress();
+  }
+
+  /* ---------------------------------------------------------
+     5c. ACTIVE NAV LINK — highlight the section in view
+     --------------------------------------------------------- */
+  const sectionLinks = Array.from(
+    document.querySelectorAll('.nav-menu a[href^="#"]')
+  );
+  if (sectionLinks.length && "IntersectionObserver" in window) {
+    const byId = new Map();
+    sectionLinks.forEach((link) => {
+      const id = link.getAttribute("href").slice(1);
+      const section = document.getElementById(id);
+      if (section) byId.set(section, link);
+    });
+
+    const navIo = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const link = byId.get(entry.target);
+          if (!link) return;
+          if (entry.isIntersecting) {
+            sectionLinks.forEach((l) => l.classList.remove("active"));
+            link.classList.add("active");
+          }
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+    );
+    byId.forEach((_link, section) => navIo.observe(section));
+  }
+
+  /* ---------------------------------------------------------
+     5d. STAT COUNT-UP — animate hero figures into view once
+     --------------------------------------------------------- */
+  const counters = Array.from(document.querySelectorAll("[data-count-to]"));
+  if (counters.length) {
+    const runCount = (el) => {
+      const target = parseFloat(el.getAttribute("data-count-to")) || 0;
+      const prefix = el.getAttribute("data-count-prefix") || "";
+      const suffix = el.getAttribute("data-count-suffix") || "";
+      const final = prefix + target + suffix;
+
+      if (prefersReduced) {
+        el.textContent = final;
+        return;
+      }
+      const duration = 1100;
+      const start = performance.now();
+      const step = (now) => {
+        const t = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
+        const val = Math.round(target * eased);
+        el.textContent = prefix + val + suffix;
+        if (t < 1) requestAnimationFrame(step);
+        else el.textContent = final;
+      };
+      requestAnimationFrame(step);
+    };
+
+    if (prefersReduced || !("IntersectionObserver" in window)) {
+      counters.forEach(runCount);
+    } else {
+      const countIo = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              runCount(entry.target);
+              obs.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.6 }
+      );
+      counters.forEach((el) => countIo.observe(el));
+    }
+  }
+
+  /* ---------------------------------------------------------
      6. ENQUIRY FORM — validation + FormSubmit AJAX
      --------------------------------------------------------- */
 

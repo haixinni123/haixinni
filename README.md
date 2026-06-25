@@ -6,21 +6,34 @@ A single-page marketing website for **Phoebe & Vale Advisory**, a long-term weal
 
 **https://haixinni123.github.io/haixinni/**
 
+![Phoebe & Vale Advisory — site preview](assets/screenshot.png)
+
 ## ✨ Features
 
 - Responsive, mobile-friendly landing page
-- Sections for Home, About, Services, Testimonials, and Contact
-- Smooth in-page navigation and interactive UI elements
-- Custom typography (Inter + Playfair Display via Google Fonts)
+- Sections for Home, About, Services, Clients (testimonials), and Contact
+- Distinctive **emerald + champagne-gold on ivory** luxury identity, with a signature
+  ascending "compounding" curve and gold scroll-progress hairline
+- Smooth in-page navigation, active-section highlighting, animated stat counters,
+  and an accessible testimonial carousel
+- Lead-capture enquiry form (FormSubmit AJAX) with inline validation and honeypot
+- On-page SEO baked in: canonical, Open Graph/Twitter cards, JSON-LD `FinancialService`
+  schema, `robots.txt`, and `sitemap.xml`
+- Custom typography (Cormorant Garamond + Jost via Google Fonts)
+- Accessibility floor: skip link, visible focus, reduced-motion support
 - Zero dependencies — pure HTML/CSS/JS
 
 ## 📁 Project Structure
 
 ```
 .
-├── index.html      # Page markup and content
-├── styles.css      # All styling
-├── script.js       # Interactive behavior
+├── index.html      # Page markup, content, and SEO meta / JSON-LD
+├── styles.css      # All styling (design tokens in :root)
+├── script.js       # Interactive behavior (nav, reveals, carousel, form)
+├── robots.txt      # Crawler directives
+├── sitemap.xml     # XML sitemap
+├── assets/
+│   └── screenshot.png   # Social preview (Open Graph) image
 └── .github/
     └── workflows/
         └── deploy.yml   # Auto-deploys to GitHub Pages on push to main

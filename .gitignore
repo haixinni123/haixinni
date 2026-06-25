@@ -16,6 +16,15 @@ secrets.json
 .vscode/
 .idea/
 .DS_Store
+.mcp.json
+skills-lock.json
+
+# Local preview / scratch artifacts (never deploy)
+.playwright-mcp/
+hero-*.png
+cards*.png
+about-services.png
+full-desktop.png
 
 # Dependencies / build output
 node_modules/

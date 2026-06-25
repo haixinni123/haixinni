@@ -3,6 +3,10 @@
   Phoebe & Vale Advisory — one-page investment advisory website
   Vanilla HTML/CSS/JS only. No frameworks, no build tools.
 
+  Redesigned with a distinctive purple + champagne identity
+  (frontend-design skill) and on-page SEO + lead-magnet conversion
+  structure (seo-audit skill). All JS hooks (IDs/classes) preserved.
+
   FORMSUBMIT ACTIVATION NOTE:
   The enquiry form posts to FormSubmit's AJAX endpoint. The FIRST time a
   submission is sent to a new email address, FormSubmit emails a one-time
@@ -15,17 +19,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Phoebe &amp; Vale Advisory — Long-Term Wealth Management</title>
-  <meta name="description" content="Phoebe & Vale Advisory helps professionals and families grow and protect long-term wealth through thoughtful planning, retirement strategy, portfolio management, and estate planning." />
 
-  <!-- Google Fonts: Playfair Display (headings) + Inter (body) -->
+  <!-- ===================== Primary SEO ===================== -->
+  <title>Phoebe &amp; Vale Advisory — Long-Term Wealth Management</title>
+  <meta name="description" content="Independent wealth management for professionals and families. Phoebe &amp; Vale Advisory guides retirement, portfolio, and estate planning. Book a free, no-obligation consultation." />
+  <meta name="keywords" content="wealth management, financial advisor, retirement planning, portfolio management, estate planning, independent financial advice" />
+  <meta name="author" content="Phoebe & Vale Advisory" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#0E2A1F" />
+  <link rel="canonical" href="https://haixinni123.github.io/haixinni/" />
+
+  <!-- ===================== Open Graph / Social ===================== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Phoebe & Vale Advisory" />
+  <meta property="og:title" content="Phoebe & Vale Advisory — Long-Term Wealth Management" />
+  <meta property="og:description" content="Considered, long-term financial guidance for professionals and families. Plan with clarity, invest with discipline. Book a free consultation." />
+  <meta property="og:url" content="https://haixinni123.github.io/haixinni/" />
+  <meta property="og:image" content="https://haixinni123.github.io/haixinni/assets/screenshot.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Phoebe & Vale Advisory — Long-Term Wealth Management" />
+  <meta name="twitter:description" content="Independent wealth management for professionals and families. Book a free, no-obligation consultation." />
+  <meta name="twitter:image" content="https://haixinni123.github.io/haixinni/assets/screenshot.png" />
+
+  <!-- ===================== Fonts ===================== -->
+  <!-- Cormorant Garamond (luxury display serif) + Jost (refined geometric body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- ===================== Structured data (JSON-LD) ===================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialService",
+    "name": "Phoebe & Vale Advisory",
+    "description": "Independent wealth management firm offering wealth planning, retirement strategy, portfolio management, and estate planning for professionals and families.",
+    "url": "https://haixinni123.github.io/haixinni/",
+    "image": "https://haixinni123.github.io/haixinni/assets/screenshot.png",
+    "areaServed": "Worldwide",
+    "foundingDate": "2004",
+    "slogan": "Grow and protect what matters.",
+    "knowsAbout": ["Wealth Planning", "Retirement Strategy", "Portfolio Management", "Estate Planning"],
+    "priceRange": "Consultation by appointment",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Service",
+      "availableLanguage": "English"
+    }
+  }
+  </script>
 </head>
 <body>
+
+  <!-- Skip link for keyboard / screen-reader users -->
+  <a href="#home" class="skip-link">Skip to content</a>
+
+  <!-- Scroll progress (gold hairline) — decorative -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
   <!-- ============================ NAVBAR ============================ -->
   <header class="navbar" id="navbar">
@@ -49,8 +101,9 @@
         <ul>
           <li><a href="#home" class="nav-link">Home</a></li>
           <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-          <li><a href="#contact" class="nav-link nav-cta">Contact</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#testimonials" class="nav-link">Clients</a></li>
+          <li><a href="#contact" class="nav-link nav-cta">Book a call</a></li>
         </ul>
       </nav>
     </div>
@@ -59,16 +112,23 @@
   <main>
     <!-- ============================= HERO ============================= -->
     <section class="hero" id="home">
-      <div class="hero-overlay"></div>
+      <div class="hero-bg" aria-hidden="true">
+        <!-- Signature: ascending "compounding" curve in champagne gold -->
+        <svg class="hero-curve" viewBox="0 0 600 400" fill="none" preserveAspectRatio="xMaxYMax slice">
+          <path class="curve-line" d="M-20 380 C 140 360, 240 300, 320 210 S 470 60, 620 20" />
+          <path class="curve-line curve-line--soft" d="M-20 396 C 160 388, 270 340, 360 250 S 520 90, 640 50" />
+        </svg>
+      </div>
+
       <div class="container hero-inner">
         <p class="hero-eyebrow reveal">Independent wealth management since 2004</p>
-        <h1 class="hero-title reveal">Grow and protect<br />what matters</h1>
+        <h1 class="hero-title reveal">Grow and protect<br /><em>what matters</em></h1>
         <p class="hero-subtitle reveal">
           Considered, long-term financial guidance for professionals and families.
           We help you plan with clarity, invest with discipline, and pass on what you build.
         </p>
         <div class="hero-actions reveal">
-          <a href="#contact" class="btn btn-primary">Book a Consultation</a>
+          <a href="#contact" class="btn btn-primary">Book a free consultation</a>
           <a href="#services" class="btn btn-ghost">Explore our services</a>
         </div>
 
@@ -76,22 +136,22 @@
         <dl class="hero-stats reveal" aria-label="Firm highlights">
           <div class="stat">
             <dt class="stat-label">Assets advised</dt>
-            <dd class="stat-value">$2B+</dd>
+            <dd class="stat-value" data-count-to="2" data-count-suffix="B+" data-count-prefix="$">$2B+</dd>
           </div>
           <div class="stat">
             <dt class="stat-label">Years of experience</dt>
-            <dd class="stat-value">20+</dd>
+            <dd class="stat-value" data-count-to="20" data-count-suffix="+">20+</dd>
           </div>
           <div class="stat">
             <dt class="stat-label">Client retention</dt>
-            <dd class="stat-value">98%</dd>
+            <dd class="stat-value" data-count-to="98" data-count-suffix="%">98%</dd>
           </div>
         </dl>
       </div>
     </section>
 
-    <!-- ===================== ABOUT / SERVICES ===================== -->
-    <section class="services" id="about">
+    <!-- ===================== ABOUT ===================== -->
+    <section class="about" id="about">
       <div class="container">
         <div class="section-head reveal">
           <p class="eyebrow">About Phoebe &amp; Vale</p>
@@ -102,8 +162,18 @@
             just a clear plan, reviewed often, and tailored to the life you want.
           </p>
         </div>
+      </div>
+    </section>
 
-        <div class="card-grid" id="services">
+    <!-- ===================== SERVICES ===================== -->
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">What we do</p>
+          <h2 class="section-title">Four pillars of long-term wealth</h2>
+        </div>
+
+        <div class="card-grid">
           <!-- Card: Wealth Planning -->
           <article class="card reveal">
             <span class="card-icon" aria-hidden="true">
@@ -160,6 +230,21 @@
             <p class="card-text">Pass on what you build, thoughtfully and tax-efficiently.</p>
           </article>
         </div>
+      </div>
+    </section>
+
+    <!-- ===================== MID-PAGE CTA BAND ===================== -->
+    <section class="cta-band" aria-label="Book a consultation">
+      <div class="container cta-band-inner reveal">
+        <div class="cta-band-copy">
+          <p class="eyebrow eyebrow--light">No obligation, no pressure</p>
+          <h2 class="cta-band-title">Ready to plan with clarity?</h2>
+          <p class="cta-band-lead">
+            Book a free first conversation with a senior adviser. We'll listen, map out where you
+            stand, and show you the next sensible step — whether or not you work with us.
+          </p>
+        </div>
+        <a href="#contact" class="btn btn-gold btn-lg">Book my consultation</a>
       </div>
     </section>
 
@@ -245,7 +330,7 @@
       <div class="container contact-inner">
         <div class="contact-intro reveal">
           <p class="eyebrow">Get in touch</p>
-          <h2 class="section-title">Book a consultation</h2>
+          <h2 class="section-title">Book your free consultation</h2>
           <p class="section-lead">
             Tell us a little about your goals. A senior adviser will respond within one business day —
             with no obligation and no pressure.
@@ -254,6 +339,7 @@
             <li>Confidential, no-obligation first conversation</li>
             <li>Independent advice — we don't sell products</li>
             <li>Senior advisers, not call centres</li>
+            <li>A clear next step within one business day</li>
           </ul>
         </div>
 
@@ -342,7 +428,8 @@
       <nav class="footer-nav" aria-label="Footer">
         <a href="#home">Home</a>
         <a href="#about">About</a>
-        <a href="#testimonials">Testimonials</a>
+        <a href="#services">Services</a>
+        <a href="#testimonials">Clients</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
