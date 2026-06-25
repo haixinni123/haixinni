@@ -378,12 +378,12 @@
 
         if (!res.ok) throw new Error("Request failed with status " + res.status);
 
-        // FormSubmit returns { success: "true" | true, ... }
+        // FormSubmit returns { success: "true" | true, ... }.
+        // Note: a needs-activation / rejected response still comes back as
+        // HTTP 200 with success:"false", so we must check the body — not the
+        // status — before declaring success.
         const data = await res.json().catch(() => ({}));
-        const ok =
-          data.success === true ||
-          data.success === "true" ||
-          res.status === 200;
+        const ok = data.success === true || data.success === "true";
 
         if (!ok) throw new Error(data.message || "Submission was not accepted.");
 
@@ -393,9 +393,12 @@
         successPanel.hidden = false;
         successPanel.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth", block: "center" });
       } catch (err) {
-        // Error: inline message, re-enable button
-        statusEl.textContent =
-          "Sorry — something went wrong sending your enquiry. Please try again, or email us directly.";
+        // Error: inline message, re-enable button.
+        // The one-time FormSubmit activation gets a tailored note so a real
+        // visitor during that window isn't left confused.
+        statusEl.textContent = /activation/i.test(err && err.message)
+          ? "Almost there — this form needs a one-time activation. We've just emailed an activation link to the site owner; once it's clicked, your enquiry will come straight through. Please try again shortly."
+          : "Sorry — something went wrong sending your enquiry. Please try again, or email us directly.";
         statusEl.classList.add("error");
         submitBtn.disabled = false;
         submitBtn.textContent = originalLabel;
