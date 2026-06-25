@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<!--
+  Phoebe & Vale Advisory — one-page investment advisory website
+  Vanilla HTML/CSS/JS only. No frameworks, no build tools.
+
+  FORMSUBMIT ACTIVATION NOTE:
+  The enquiry form posts to FormSubmit's AJAX endpoint. The FIRST time a
+  submission is sent to a new email address, FormSubmit emails a one-time
+  confirmation/activation link to that address. The form will not deliver
+  any messages until that activation link has been clicked. After that,
+  every submission arrives in the inbox automatically.
+  The target email is set in script.js (search for REPLACE_WITH_YOUR_EMAIL).
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phoebe &amp; Vale Advisory — Long-Term Wealth Management</title>
+  <meta name="description" content="Phoebe & Vale Advisory helps professionals and families grow and protect long-term wealth through thoughtful planning, retirement strategy, portfolio management, and estate planning." />
+
+  <!-- Google Fonts: Playfair Display (headings) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============================ NAVBAR ============================ -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="brand" aria-label="Phoebe and Vale Advisory home">
+        <span class="brand-mark" aria-hidden="true">P&amp;V</span>
+        <span class="brand-text">
+          <span class="brand-name">Phoebe &amp; Vale</span>
+          <span class="brand-tag">ADVISORY</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu"
+              aria-expanded="false" aria-controls="navMenu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <nav class="nav-menu" id="navMenu" aria-label="Primary">
+        <ul>
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+          <li><a href="#contact" class="nav-link nav-cta">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============================= HERO ============================= -->
+    <section class="hero" id="home">
+      <div class="hero-overlay"></div>
+      <div class="container hero-inner">
+        <p class="hero-eyebrow reveal">Independent wealth management since 2004</p>
+        <h1 class="hero-title reveal">Grow and protect<br />what matters</h1>
+        <p class="hero-subtitle reveal">
+          Considered, long-term financial guidance for professionals and families.
+          We help you plan with clarity, invest with discipline, and pass on what you build.
+        </p>
+        <div class="hero-actions reveal">
+          <a href="#contact" class="btn btn-primary">Book a Consultation</a>
+          <a href="#services" class="btn btn-ghost">Explore our services</a>
+        </div>
+
+        <!-- Trust stats -->
+        <dl class="hero-stats reveal" aria-label="Firm highlights">
+          <div class="stat">
+            <dt class="stat-label">Assets advised</dt>
+            <dd class="stat-value">$2B+</dd>
+          </div>
+          <div class="stat">
+            <dt class="stat-label">Years of experience</dt>
+            <dd class="stat-value">20+</dd>
+          </div>
+          <div class="stat">
+            <dt class="stat-label">Client retention</dt>
+            <dd class="stat-value">98%</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ===================== ABOUT / SERVICES ===================== -->
+    <section class="services" id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">About Phoebe &amp; Vale</p>
+          <h2 class="section-title">A calm, disciplined approach to your financial life</h2>
+          <p class="section-lead">
+            We are an independent advisory firm built around one idea: that good decisions,
+            repeated patiently over decades, compound into lasting security. No hype, no shortcuts —
+            just a clear plan, reviewed often, and tailored to the life you want.
+          </p>
+        </div>
+
+        <div class="card-grid" id="services">
+          <!-- Card: Wealth Planning -->
+          <article class="card reveal">
+            <span class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21V8l9-5 9 5v13" />
+                <path d="M9 21v-6h6v6" />
+                <path d="M3 12h18" />
+              </svg>
+            </span>
+            <h3 class="card-title">Wealth Planning</h3>
+            <p class="card-text">A holistic roadmap aligning your savings, goals, and timelines.</p>
+          </article>
+
+          <!-- Card: Retirement Strategy -->
+          <article class="card reveal">
+            <span class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12a9 9 0 1 1 18 0" />
+                <path d="M12 12l4-2" />
+                <circle cx="12" cy="12" r="1.4" />
+                <path d="M3 18h18" />
+              </svg>
+            </span>
+            <h3 class="card-title">Retirement Strategy</h3>
+            <p class="card-text">Income you can rely on, structured to last the whole journey.</p>
+          </article>
+
+          <!-- Card: Portfolio Management -->
+          <article class="card reveal">
+            <span class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19V5" />
+                <path d="M4 19h16" />
+                <path d="M8 16l4-5 3 3 5-7" />
+              </svg>
+            </span>
+            <h3 class="card-title">Portfolio Management</h3>
+            <p class="card-text">Diversified, evidence-based investing matched to your risk.</p>
+          </article>
+
+          <!-- Card: Estate Planning -->
+          <article class="card reveal">
+            <span class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3l8 4v6c0 4.5-3.5 7-8 8-4.5-1-8-3.5-8-8V7z" />
+                <path d="M9.5 12l1.8 1.8 3.2-3.6" />
+              </svg>
+            </span>
+            <h3 class="card-title">Estate Planning</h3>
+            <p class="card-text">Pass on what you build, thoughtfully and tax-efficiently.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= TESTIMONIALS ======================= -->
+    <section class="testimonials" id="testimonials">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">In our clients' words</p>
+          <h2 class="section-title">Trusted across generations</h2>
+        </div>
+
+        <div class="carousel reveal" id="carousel"
+             aria-roledescription="carousel" aria-label="Client testimonials">
+          <div class="carousel-viewport">
+            <ul class="carousel-track" id="carouselTrack" aria-live="polite">
+
+              <li class="testimonial" role="group" aria-roledescription="slide" aria-label="1 of 3">
+                <blockquote class="testimonial-quote">
+                  “Phoebe &amp; Vale gave us a plan we actually understand. Markets move,
+                  but our confidence hasn't — because someone is always watching the long view for us.”
+                </blockquote>
+                <div class="testimonial-person">
+                  <span class="avatar" aria-hidden="true">EM</span>
+                  <span class="person-meta">
+                    <span class="person-name">Eleanor Marsh</span>
+                    <span class="person-role">Retired Engineer</span>
+                  </span>
+                </div>
+              </li>
+
+              <li class="testimonial" role="group" aria-roledescription="slide" aria-label="2 of 3">
+                <blockquote class="testimonial-quote">
+                  “What sets them apart is the patience. No pressure, no jargon — just clear advice
+                  that has quietly compounded into real security for our family.”
+                </blockquote>
+                <div class="testimonial-person">
+                  <span class="avatar" aria-hidden="true">DC</span>
+                  <span class="person-meta">
+                    <span class="person-name">David &amp; Priya Chen</span>
+                    <span class="person-role">Business Owners</span>
+                  </span>
+                </div>
+              </li>
+
+              <li class="testimonial" role="group" aria-roledescription="slide" aria-label="3 of 3">
+                <blockquote class="testimonial-quote">
+                  “They helped me structure my estate so my children are looked after without the worry.
+                  I sleep better knowing it's handled with such care.”
+                </blockquote>
+                <div class="testimonial-person">
+                  <span class="avatar" aria-hidden="true">RA</span>
+                  <span class="person-meta">
+                    <span class="person-name">Robert Aldridge</span>
+                    <span class="person-role">Physician, semi-retired</span>
+                  </span>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+
+          <div class="carousel-controls">
+            <button class="carousel-btn" id="prevBtn" aria-label="Previous testimonial" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+            <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Choose testimonial"></div>
+            <button class="carousel-btn" id="nextBtn" aria-label="Next testimonial" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= ENQUIRY ========================= -->
+    <section class="contact" id="contact">
+      <div class="container contact-inner">
+        <div class="contact-intro reveal">
+          <p class="eyebrow">Get in touch</p>
+          <h2 class="section-title">Book a consultation</h2>
+          <p class="section-lead">
+            Tell us a little about your goals. A senior adviser will respond within one business day —
+            with no obligation and no pressure.
+          </p>
+          <ul class="contact-points">
+            <li>Confidential, no-obligation first conversation</li>
+            <li>Independent advice — we don't sell products</li>
+            <li>Senior advisers, not call centres</li>
+          </ul>
+        </div>
+
+        <div class="form-wrap reveal">
+          <form id="enquiryForm" class="enquiry-form" novalidate>
+            <!-- Honeypot: hidden from real users, tempting to bots -->
+            <input type="text" name="_honey" id="_honey" class="honeypot"
+                   tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+            <div class="field">
+              <label for="fullName">Full name <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="fullName" name="name" autocomplete="name"
+                     required aria-required="true" aria-describedby="err-fullName" />
+              <p class="field-error" id="err-fullName" role="alert"></p>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+                <input type="email" id="email" name="email" autocomplete="email"
+                       required aria-required="true" aria-describedby="err-email" />
+                <p class="field-error" id="err-email" role="alert"></p>
+              </div>
+
+              <div class="field">
+                <label for="phone">Phone <span class="optional">(optional)</span></label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel"
+                       aria-describedby="err-phone" />
+                <p class="field-error" id="err-phone" role="alert"></p>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="interest">Investment interest</label>
+              <select id="interest" name="interest">
+                <option value="Wealth Planning">Wealth Planning</option>
+                <option value="Retirement">Retirement</option>
+                <option value="Portfolio Management">Portfolio Management</option>
+                <option value="Estate Planning">Estate Planning</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="message">Message <span class="req" aria-hidden="true">*</span></label>
+              <textarea id="message" name="message" rows="5"
+                        required aria-required="true" aria-describedby="err-message"
+                        placeholder="Briefly, what would you like help with?"></textarea>
+              <p class="field-error" id="err-message" role="alert"></p>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+              Send enquiry
+            </button>
+
+            <p class="form-status" id="formStatus" role="alert" aria-live="assertive"></p>
+            <p class="form-fineprint">
+              By submitting, you agree to be contacted about your enquiry. We never share your details.
+            </p>
+          </form>
+
+          <!-- Success panel, shown via JS after a successful submit -->
+          <div class="form-success" id="formSuccess" hidden>
+            <span class="success-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+            </span>
+            <h3>Thank you</h3>
+            <p>Thanks — we'll be in touch within one business day.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-name">Phoebe &amp; Vale Advisory</span>
+        <p class="footer-tagline">Grow and protect what matters — for the long term.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+
+    <div class="container footer-bottom">
+      <p class="footer-copy">&copy; <span id="year"></span> Phoebe &amp; Vale Advisory. All rights reserved.</p>
+      <p class="footer-disclaimer">
+        This website is for informational purposes only and does not constitute financial advice.
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
